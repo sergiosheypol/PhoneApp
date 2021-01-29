@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 @Configuration
 public class PhoneRouter {
     @Bean
-    public RouterFunction<ServerResponse> route(PhoneHandler handler) {
+    public RouterFunction<ServerResponse> routePhone(final PhoneHandler handler) {
         return RouterFunctions
                 .route(RequestPredicates.GET("/phone"), handler::getAll);
     }

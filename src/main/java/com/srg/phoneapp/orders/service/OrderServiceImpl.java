@@ -5,9 +5,11 @@ import com.srg.phoneapp.orders.service.bean.OrderIBean;
 import com.srg.phoneapp.orders.service.bean.OrderOBean;
 import com.srg.phoneapp.orders.service.mapper.OrderMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
@@ -17,6 +19,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Mono<OrderOBean> checkout(OrderIBean order) {
-        return null;
+        return catalogClient.getCatalog()
+                .collectList()
+                .map(__ -> OrderOBean.builder().build());
     }
 }
