@@ -10,6 +10,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface OrderMapper {
 
+    // MODEL
     @Mapping(source = "iBean.customerName", target = "customerName")
     @Mapping(source = "iBean.customerSurname", target = "customerSurname")
     @Mapping(source = "iBean.customerEmail", target = "customerEmail")
@@ -17,6 +18,7 @@ public interface OrderMapper {
 
     OrderPriceModel toModel(Double value, String currency);
 
+    // BEAN
     OrderOBean toOBean(OrderModel model);
 
 
