@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PhoneModel {
+    private Long id;
     private String name;
     private String img;
     private String description;
-    private PriceModel price;
+    private PhonePriceModel price;
 }

@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PhoneDto {
+    private Long id;
     private String name;
     private String img;
     private String description;
-    private PriceDto price;
+    private PhonePriceDto price;
 }

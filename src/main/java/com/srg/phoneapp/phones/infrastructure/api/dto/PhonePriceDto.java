@@ -1,4 +1,4 @@
-package com.srg.phoneapp.phones.service.bean;
+package com.srg.phoneapp.phones.infrastructure.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PriceBean {
+public class PhonePriceDto {
     private String currency;
     private Double value;
 }

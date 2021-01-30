@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PhoneBean {
-    private Long id;
-    private String name;
-    private String img;
-    private String description;
-    private PhonePriceBean price;
+public class PhonePriceBean {
+    private String currency;
+    private Double value;
 }

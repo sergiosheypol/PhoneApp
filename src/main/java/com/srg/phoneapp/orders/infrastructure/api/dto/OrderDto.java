@@ -1,5 +1,6 @@
 package com.srg.phoneapp.orders.infrastructure.api.dto;
 
+import com.srg.phoneapp.phones.infrastructure.api.dto.PhonePriceDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +17,5 @@ public class OrderDto {
     private String customerSurname;
     private String customerEmail;
     private List<Long> phoneIds;
+    private PhonePriceDto price;
 }

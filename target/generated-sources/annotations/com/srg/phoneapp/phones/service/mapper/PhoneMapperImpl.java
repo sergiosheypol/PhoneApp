@@ -1,18 +1,19 @@
 package com.srg.phoneapp.phones.service.mapper;
 
 import com.srg.phoneapp.phones.infrastructure.api.dto.PhoneDto;
-import com.srg.phoneapp.phones.infrastructure.api.dto.PriceDto;
+import com.srg.phoneapp.phones.infrastructure.api.dto.PhonePriceDto;
 import com.srg.phoneapp.phones.infrastructure.persistence.entity.PhoneEntity;
 import com.srg.phoneapp.phones.infrastructure.persistence.entity.PriceEntity;
 import com.srg.phoneapp.phones.service.bean.PhoneBean;
-import com.srg.phoneapp.phones.service.bean.PriceBean;
+import com.srg.phoneapp.phones.service.bean.PhonePriceBean;
 import com.srg.phoneapp.phones.service.model.PhoneModel;
+import com.srg.phoneapp.phones.service.model.PhonePriceModel;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-29T22:50:57+0100",
+    date = "2021-01-30T14:14:36+0100",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.2 (Oracle Corporation)"
 )
 @Component
@@ -26,10 +27,11 @@ public class PhoneMapperImpl implements PhoneMapper {
 
         PhoneBean phoneBean = new PhoneBean();
 
+        phoneBean.setId( model.getId() );
         phoneBean.setName( model.getName() );
         phoneBean.setImg( model.getImg() );
         phoneBean.setDescription( model.getDescription() );
-        phoneBean.setPrice( toBean( model.getPrice() ) );
+        phoneBean.setPrice( phonePriceModelToPhonePriceBean( model.getPrice() ) );
 
         return phoneBean;
     }
@@ -42,10 +44,11 @@ public class PhoneMapperImpl implements PhoneMapper {
 
         PhoneModel phoneModel = new PhoneModel();
 
+        phoneModel.setId( bean.getId() );
         phoneModel.setName( bean.getName() );
         phoneModel.setImg( bean.getImg() );
         phoneModel.setDescription( bean.getDescription() );
-        phoneModel.setPrice( toModel( bean.getPrice() ) );
+        phoneModel.setPrice( phonePriceBeanToPhonePriceModel( bean.getPrice() ) );
 
         return phoneModel;
     }
@@ -58,10 +61,11 @@ public class PhoneMapperImpl implements PhoneMapper {
 
         PhoneBean phoneBean = new PhoneBean();
 
+        phoneBean.setId( entity.getId() );
         phoneBean.setName( entity.getName() );
         phoneBean.setImg( entity.getImg() );
         phoneBean.setDescription( entity.getDescription() );
-        phoneBean.setPrice( priceEntityToPriceBean( entity.getPrice() ) );
+        phoneBean.setPrice( priceEntityToPhonePriceBean( entity.getPrice() ) );
 
         return phoneBean;
     }
@@ -74,37 +78,64 @@ public class PhoneMapperImpl implements PhoneMapper {
 
         PhoneDto phoneDto = new PhoneDto();
 
+        phoneDto.setId( bean.getId() );
         phoneDto.setName( bean.getName() );
         phoneDto.setImg( bean.getImg() );
         phoneDto.setDescription( bean.getDescription() );
-        phoneDto.setPrice( priceBeanToPriceDto( bean.getPrice() ) );
+        phoneDto.setPrice( phonePriceBeanToPhonePriceDto( bean.getPrice() ) );
 
         return phoneDto;
     }
 
-    protected PriceBean priceEntityToPriceBean(PriceEntity priceEntity) {
+    protected PhonePriceBean phonePriceModelToPhonePriceBean(PhonePriceModel phonePriceModel) {
+        if ( phonePriceModel == null ) {
+            return null;
+        }
+
+        PhonePriceBean phonePriceBean = new PhonePriceBean();
+
+        phonePriceBean.setCurrency( phonePriceModel.getCurrency() );
+        phonePriceBean.setValue( phonePriceModel.getValue() );
+
+        return phonePriceBean;
+    }
+
+    protected PhonePriceModel phonePriceBeanToPhonePriceModel(PhonePriceBean phonePriceBean) {
+        if ( phonePriceBean == null ) {
+            return null;
+        }
+
+        PhonePriceModel phonePriceModel = new PhonePriceModel();
+
+        phonePriceModel.setCurrency( phonePriceBean.getCurrency() );
+        phonePriceModel.setValue( phonePriceBean.getValue() );
+
+        return phonePriceModel;
+    }
+
+    protected PhonePriceBean priceEntityToPhonePriceBean(PriceEntity priceEntity) {
         if ( priceEntity == null ) {
             return null;
         }
 
-        PriceBean priceBean = new PriceBean();
+        PhonePriceBean phonePriceBean = new PhonePriceBean();
 
-        priceBean.setCurrency( priceEntity.getCurrency() );
-        priceBean.setValue( priceEntity.getValue() );
+        phonePriceBean.setCurrency( priceEntity.getCurrency() );
+        phonePriceBean.setValue( priceEntity.getValue() );
 
-        return priceBean;
+        return phonePriceBean;
     }
 
-    protected PriceDto priceBeanToPriceDto(PriceBean priceBean) {
-        if ( priceBean == null ) {
+    protected PhonePriceDto phonePriceBeanToPhonePriceDto(PhonePriceBean phonePriceBean) {
+        if ( phonePriceBean == null ) {
             return null;
         }
 
-        PriceDto priceDto = new PriceDto();
+        PhonePriceDto phonePriceDto = new PhonePriceDto();
 
-        priceDto.setCurrency( priceBean.getCurrency() );
-        priceDto.setValue( priceBean.getValue() );
+        phonePriceDto.setCurrency( phonePriceBean.getCurrency() );
+        phonePriceDto.setValue( phonePriceBean.getValue() );
 
-        return priceDto;
+        return phonePriceDto;
     }
 }

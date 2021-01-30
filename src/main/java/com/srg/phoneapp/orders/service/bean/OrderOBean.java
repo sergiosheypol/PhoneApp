@@ -1,12 +1,9 @@
 package com.srg.phoneapp.orders.service.bean;
 
-import com.srg.phoneapp.phones.service.bean.PhoneBean;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @Builder
@@ -17,5 +14,5 @@ public class OrderOBean {
     private String customerName;
     private String customerSurname;
     private String customerEmail;
-    private List<PhoneBean> phones;
+    private OrderPriceOBean price;
 }

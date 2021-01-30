@@ -8,6 +8,7 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class PhoneEntity {
+    private Long id;
     private String name;
     private String img;
     private String description;

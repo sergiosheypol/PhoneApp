@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PriceModel {
-    private Currency currency;
+public class PhonePriceModel {
+    private String currency;
     private Double value;
 }
