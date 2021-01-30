@@ -16,7 +16,11 @@ public class PhoneRepositoryImpl implements PhoneRepository {
 
     @Override
     public Flux<PhoneBean> getAll() {
-        return Flux.fromIterable(List.of(PhoneData.getSamsung(), PhoneData.getIphone()))
+        return Flux.fromIterable(
+                List.of(PhoneData.getSamsung(),
+                        PhoneData.getIphone(),
+                        PhoneData.getXiaomi(),
+                        PhoneData.getHuawei()))
                 .map(mapper::toBean);
     }
 }
