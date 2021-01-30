@@ -5,12 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderOBean {
-    private Long id;
+    private UUID id;
     private String customerName;
     private String customerSurname;
     private String customerEmail;

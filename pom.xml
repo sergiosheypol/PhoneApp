@@ -17,6 +17,7 @@
 		<java.version>11</java.version>
 		<org.mapstruct.version>1.3.1.Final</org.mapstruct.version>
 		<mockito.version>3.5.13</mockito.version>
+		<vavr.version>0.10.3</vavr.version>
 	</properties>
 	<dependencies>
 
@@ -42,6 +43,11 @@
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>${org.mapstruct.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.vavr</groupId>
+			<artifactId>vavr</artifactId>
+			<version>${vavr.version}</version>
 		</dependency>
 		<!-- End External -->
 

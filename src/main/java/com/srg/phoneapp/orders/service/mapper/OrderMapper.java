@@ -9,6 +9,8 @@ import com.srg.phoneapp.orders.service.model.OrderPriceModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.UUID;
+
 @Mapper(componentModel = "spring")
 public interface OrderMapper {
 
@@ -16,7 +18,7 @@ public interface OrderMapper {
     @Mapping(source = "iBean.customerName", target = "customerName")
     @Mapping(source = "iBean.customerSurname", target = "customerSurname")
     @Mapping(source = "iBean.customerEmail", target = "customerEmail")
-    OrderModel toModel(OrderIBean iBean, OrderPriceModel price);
+    OrderModel toModel(OrderIBean iBean, OrderPriceModel price, UUID id);
 
     OrderPriceModel toModel(Double value, String currency);
 
@@ -26,6 +28,4 @@ public interface OrderMapper {
     OrderIBean toIBean(OrderRQDto dto);
 
     OrderRSDto toRSDto(OrderOBean oBean);
-
-
 }
