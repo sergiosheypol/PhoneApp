@@ -1,8 +1,7 @@
 package com.srg.phoneapp.orders.infrastructure.api.handler;
 
+import com.srg.phoneapp.orders.infrastructure.api.dto.OrderDto;
 import com.srg.phoneapp.orders.service.OrderService;
-import com.srg.phoneapp.orders.service.bean.OrderIBean;
-import com.srg.phoneapp.orders.service.bean.OrderOBean;
 import com.srg.phoneapp.orders.service.mapper.OrderMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -14,12 +13,15 @@ import reactor.core.publisher.Mono;
 @Component
 @RequiredArgsConstructor
 public class OrderHandler {
+
     private final OrderService service;
     private final OrderMapper mapper;
 
     public Mono<ServerResponse> processOrder(final ServerRequest request) {
-        return ServerResponse.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(service.checkout(OrderIBean.builder().build()), OrderOBean.class);
+        return request.bodyToMono(OrderDto.class)
+                .map(mapper::toIBean)
+                .flatMap(service::checkout)
+                .map(mapper::toDto)
+                .flatMap(dto -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValue(dto));
     }
 }

@@ -1,5 +1,6 @@
 package com.srg.phoneapp.orders.service.mapper;
 
+import com.srg.phoneapp.orders.infrastructure.api.dto.OrderDto;
 import com.srg.phoneapp.orders.service.bean.OrderIBean;
 import com.srg.phoneapp.orders.service.bean.OrderOBean;
 import com.srg.phoneapp.orders.service.model.OrderModel;
@@ -20,6 +21,10 @@ public interface OrderMapper {
 
     // BEAN
     OrderOBean toOBean(OrderModel model);
+
+    OrderIBean toIBean(OrderDto dto);
+
+    OrderDto toDto(OrderOBean oBean);
 
 
 }
