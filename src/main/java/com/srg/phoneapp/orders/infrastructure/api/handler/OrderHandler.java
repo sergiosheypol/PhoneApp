@@ -1,6 +1,6 @@
 package com.srg.phoneapp.orders.infrastructure.api.handler;
 
-import com.srg.phoneapp.orders.infrastructure.api.dto.OrderDto;
+import com.srg.phoneapp.orders.infrastructure.api.dto.OrderRQDto;
 import com.srg.phoneapp.orders.service.OrderService;
 import com.srg.phoneapp.orders.service.mapper.OrderMapper;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +18,10 @@ public class OrderHandler {
     private final OrderMapper mapper;
 
     public Mono<ServerResponse> processOrder(final ServerRequest request) {
-        return request.bodyToMono(OrderDto.class)
+        return request.bodyToMono(OrderRQDto.class)
                 .map(mapper::toIBean)
                 .flatMap(service::checkout)
-                .map(mapper::toDto)
-                .flatMap(dto -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValue(dto));
+                .map(mapper::toRSDto)
+                .flatMap(rs -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValue(rs));
     }
 }

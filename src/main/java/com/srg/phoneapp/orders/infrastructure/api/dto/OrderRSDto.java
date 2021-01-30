@@ -7,18 +7,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class OrderDto {
+public class OrderRSDto {
     private Long id;
     private String customerName;
     private String customerSurname;
     private String customerEmail;
-    private List<Long> phoneIds;
     private PhonePriceDto price;
 }
