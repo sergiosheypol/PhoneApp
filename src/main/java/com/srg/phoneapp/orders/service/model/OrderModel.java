@@ -1,6 +1,6 @@
 package com.srg.phoneapp.orders.service.model;
 
-import com.srg.phoneapp.catalog.service.bean.PhoneBean;
+import com.srg.phoneapp.phones.service.bean.PhoneBean;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

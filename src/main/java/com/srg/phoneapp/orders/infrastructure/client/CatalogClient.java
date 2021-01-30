@@ -1,6 +1,6 @@
 package com.srg.phoneapp.orders.infrastructure.client;
 
-import com.srg.phoneapp.catalog.service.bean.PhoneBean;
+import com.srg.phoneapp.phones.service.bean.PhoneBean;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
