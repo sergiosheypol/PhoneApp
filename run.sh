@@ -1,0 +1,1 @@
+docker build -t phoneapp:0.0.1 . && docker run -p 8081:8081 --name phoneapp phoneapp:0.0.1
